@@ -1,7 +1,7 @@
 services:
   llamara:
-    # image: ghcr.io/llamara-ai/llamara-backend:latest
-    image: docker.io/llamara-ai/llamara-backend-jvm # locally build image
+    image: ghcr.io/llamara-ai/llamara-backend:latest
+    # image: docker.io/llamara-ai/llamara-backend-jvm # locally build image
     depends_on:
       postgres:
         condition: service_healthy
