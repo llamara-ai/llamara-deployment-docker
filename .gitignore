@@ -16,6 +16,9 @@ bin/
 # TLS Certificates
 .certs/
 
+# Configuration
+config/application.yaml
+
 # Docker volumes
 postgres/
 minio/
