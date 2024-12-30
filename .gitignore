@@ -1,0 +1,23 @@
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
+
+# Local environment
+.env
+
+# TLS Certificates
+.certs/
+
+# Docker volumes
+postgres/
+minio/
+redis/
+qdrant/

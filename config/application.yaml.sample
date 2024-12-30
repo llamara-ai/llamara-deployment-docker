@@ -1,0 +1,5 @@
+quarkus:
+  # Configure OIDC provider
+  oidc:
+    auth-server-url:
+    client-id:
