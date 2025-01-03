@@ -74,7 +74,7 @@ services:
     entrypoint: >
       /bin/sh -c "
       /usr/bin/mc alias set myminio http://minio:9000 minio ${MINIO_ROOT_PASSWORD};
-      /usr/bin/mc admin accesskey create myminio --access-key ${MINIO_ACCESS_KEY} --secret-key ${MINIO_SECRET_KEY};
+      /usr/bin/mc admin accesskey create myminio --access-key ${MINIO_ACCESS_KEY} --secret-key ${MINIO_SECRET_KEY} --name llamara-backend;
       exit 0;
       "
 
