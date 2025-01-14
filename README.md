@@ -4,7 +4,7 @@ LLAMARA is an LLM-based assistant for information retrieval from a provided know
 It aims at supporting researchers working with scientific papers, whitepapers and documentation,
 as well as possibly serving research findings in an accessible way to the public.
 
-This repository contains a Docker Compose and a configuration template to deploy the [LLAMARA distribution](https://github.com/llamara-ai/llamara-docker) Docker container.
+This repository contains a Docker Compose and a configuration template to deploy the [LLAMARA distribution](https://github.com/llamara-ai/llamara-distro) Docker container.
 
 ## Dependencies
 
