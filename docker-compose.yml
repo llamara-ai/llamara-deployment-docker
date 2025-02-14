@@ -41,7 +41,7 @@ services:
     # ports:
     #   - 5432:5432
     volumes:
-      - ./postgres/pgdata:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     environment:
       - POSTGRES_USER=llamara
@@ -63,7 +63,7 @@ services:
     #   - 9000:9000 # MinIO server
      - 9001:9001 # MinIO console
     volumes:
-      - ./minio/data:/data
+      - ./minio_data:/data
     environment:
       - MINIO_ROOT_USER=minio
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
@@ -97,8 +97,8 @@ services:
     # ports:
     #   - 6379:6379
     volumes:
-      - ./redis/redis-data:/var/lib/redis
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis_data:/var/lib/redis
+    #  - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
     healthcheck:
@@ -116,7 +116,7 @@ services:
       - 6333:6333 # REST API & web interface
     #  - 6334:6334 # gRPC API
     volumes:
-      - ./qdrant/qdrant_storage:/qdrant/storage:z
+      - ./qdrant_data:/qdrant/storage:z
     environment:
       - QDRANT__SERVICE__API_KEY=${QDRANT_API_KEY}
     healthcheck:

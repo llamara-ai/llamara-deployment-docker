@@ -20,7 +20,7 @@ bin/
 config/application.yaml
 
 # Docker volumes
-postgres/
-minio/
-redis/
-qdrant/
+minio_data/
+postgres_data/
+qdrant_data/
+redis_data/
