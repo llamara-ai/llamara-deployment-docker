@@ -75,7 +75,7 @@ services:
       retries: 3
 
   minio_init:
-    image: minio/mc
+    image: minio/mc:RELEASE.2025-02-08T19-14-21Z
     networks:
       - internal
     depends_on:
