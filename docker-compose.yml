@@ -34,7 +34,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
 
   postgres:
-    image: postgres:latest
+    image: postgres:17
     hostname: postgres
     networks:
       - internal
@@ -54,7 +54,7 @@ services:
       retries: 3
 
   minio:
-    image: minio/minio:latest
+    image: minio/minio:RELEASE.2025-02-07T23-21-09Z
     hostname: minio
     networks:
       - internal
@@ -89,7 +89,7 @@ services:
       "
 
   redis:
-    image: redis:latest
+    image: redis:7.4
     hostname: redis
     networks:
       - internal
@@ -108,7 +108,7 @@ services:
       retries: 3
 
   qdrant:
-    image: qdrant/qdrant:latest
+    image: qdrant/qdrant:v1.13.3
     hostname: qdrant
     networks:
       - internal
