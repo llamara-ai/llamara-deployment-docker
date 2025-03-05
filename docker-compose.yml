@@ -107,7 +107,7 @@ services:
       retries: 3
 
   qdrant:
-    image: qdrant/qdrant:v1.13.3
+    image: qdrant/qdrant:v1.13.4
     hostname: qdrant
     networks:
       - internal
