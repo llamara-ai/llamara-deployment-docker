@@ -54,7 +54,7 @@ services:
       retries: 3
 
   minio:
-    image: minio/minio:RELEASE.2025-02-28T09-55-16Z
+    image: minio/minio:RELEASE.2025-03-12T18-04-18Z
     hostname: minio
     networks:
       - internal
@@ -75,7 +75,7 @@ services:
       retries: 3
 
   minio_init:
-    image: minio/mc:RELEASE.2025-02-21T16-00-46Z
+    image: minio/mc:RELEASE.2025-03-12T17-29-24Z
     networks:
       - internal
     depends_on:
