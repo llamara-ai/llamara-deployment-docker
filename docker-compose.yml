@@ -1,8 +1,7 @@
 services:
   llamara:
-    image: ghcr.io/llamara-ai/llamara:main # latest distribution snapshot
-    # image: ghcr.io/llamara-ai/llamara-backend:latest # latest backend release
-    # image: docker.io/llamara-ai/llamara-backend-jvm # locally build image
+    image: ghcr.io/llamara-ai/llamara:latest # latest distribution release
+    # image: docker.io/llamara-ai/llamara-backend-jvm # locally build backend image
     hostname: llamara
     networks:
       - internal
