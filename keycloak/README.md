@@ -1,37 +1,46 @@
-# Keycloak setup guide
+# Keycloak Setup Guide
 
 ## Installation
+
 Before you start, set up the following environment variables in a `.env` file:
+
 ```dotenv
 KC_POSTGRES_PASSWORD=
 KC_ADMIN_PASSWORD=
 ```
 
 To start needed keycloak services, run the following command:
+
 ```shell script
 docker compose up
 ```
+
 The Keycloak server will be available at `http://localhost:8081`.
 
 ## Keycloak Configuration
 
-### Create a new realm:
-Login to the Keycloak admin console at `http://localhost:8081/admin/master/console/` using the admin credentials you set in the `.env` file.  
-Click on the "Add realm" button in the top left corner of the Keycloak admin console. Upload the provided [llamara-realm.json](./llamara-realm.json) file.  
+### Create a New Realm
 
-### Adjust URLs:
+Login to the Keycloak admin console at `http://localhost:8081/admin/master/console/` using the admin credentials you set in the `.env` file.  
+Click on the "Add realm" button in the top left corner of the Keycloak admin console. Upload the provided [llamara-realm.json](./llamara-realm.json) file.
+
+### Adjust URLs
+
 1. In the Keycloak admin console, navigate to the "Clients" section.
 2. Select the `frontend` client.
 3. In the "Settings" tab, adjust the Root URL, Home URL, Admin URL, if needed. ![Adjust URLs](./pictures/configure-client-urls.png)
 
-### Create new secret:
+### Create New Secret
+
 1. In the Keycloak admin console, navigate to the "Clients" section.
 2. Select the `backend` client.
 3. In the "Credentials" tab, click on the "Regenerate Secret" button. This will generate a new secret for the backend client.
 
-### Update backend configuration:
+### Update Backend Configuration
+
 Update the application.yaml file with the Keycloak realm information.
 Adjust the `auth-server-url` to point to your Keycloak server and the secret to the one generated in the previous step.
+
 ```yaml
 frontend:
   oidc:
@@ -44,9 +53,11 @@ quarkus:
     credentials:
       secret: secret
 ```
+
 The Keycloak server has to be reachable from the backend container and the client computer. So localhost won't work.
 
-### Setup users:
+### Setup Users
+
 1. In the Keycloak admin console, navigate to the "Users" section.
 2. Click on the "Add user" button.
 3. Fill in the username. We also recommended to set first and last name to be displayed in the UI.
