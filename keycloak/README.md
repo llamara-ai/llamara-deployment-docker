@@ -24,9 +24,14 @@ Click on the "Add realm" button in the top left corner of the Keycloak admin con
 2. Select the `frontend` client.
 3. In the "Settings" tab, adjust the Root URL, Home URL, Admin URL, if needed. ![Adjust URLs](./pictures/configure-client-urls.png)
 
+### Create new secret:
+1. In the Keycloak admin console, navigate to the "Clients" section.
+2. Select the `backend` client.
+3. In the "Credentials" tab, click on the "Regenerate Secret" button. This will generate a new secret for the backend client.
 
 ### Update backend configuration:
-Update the application.yaml file with the Keycloak realm information. Adjust the `auth-server-url` to point to your Keycloak server. 
+Update the application.yaml file with the Keycloak realm information.
+Adjust the `auth-server-url` to point to your Keycloak server and the secret to the one generated in the previous step.
 ```yaml
 frontend:
   oidc:
@@ -36,6 +41,8 @@ quarkus:
   oidc:
     auth-server-url: https://URL-TO-Keycloak/realms/llamara
     client-id: backend
+    credentials:
+      secret: secret
 ```
 The Keycloak server has to be reachable from the backend container and the client computer. So localhost won't work.
 
@@ -46,4 +53,3 @@ The Keycloak server has to be reachable from the backend container and the clien
 4. Click on the "Create" button.
 5. In the "Credentials" tab, set a password for the user. Make sure to toggle the "Temporary" switch to "Off" so that the user doesn't have to reset their password on first login.
 6. In the "Role Mappings" tab, and click on "Assign Roles". Select in the dropdown field "Filter by realm roles". Each user must have assigned the role `user` to be able to log in. If user should have admin rights, assign the role `admin` as well. ![Add user](./pictures/add-user.png)
-
