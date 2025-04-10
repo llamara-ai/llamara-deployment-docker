@@ -11,9 +11,7 @@ This repository contains a Docker Compose file and a configuration template to d
 ### Authentication
 
 This application requires an OIDC authentication provider to be set up.
-We recommend to use Keycloak as OIDC provider.
-
-You need to add the `microprofile-jwt` and `profile` scopes for the Quarkus client, e.g. for Keycloak see [Keycloak Server Documentation](https://www.keycloak.org/docs/latest/server_admin/#protocol).
+We recommend to use Keycloak as OIDC provider. For more details see the [Keycloak setup guide](/keycloak).
 
 ## Configuration
 

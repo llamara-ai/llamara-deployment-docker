@@ -1,0 +1,195 @@
+:root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 92.9%;
+    --secondary-foreground: 240 5.9% 8%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 85%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+    --logo-url: url("../img/logo.svg");
+}
+
+/* Add dark mode toggle based on system preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+        --logo-url: url("../img/logo-dark.svg");
+    }
+}
+
+/* Hide title show logo instead */
+#kc-header-wrapper {
+    display: none;
+}
+
+/* Style the logo */
+#kc-header {
+    background-image: var(--logo-url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 120px;
+}
+
+/* Align the logo and card to the center */
+.login-pf-page {
+    height: 100vh;
+    align-content: center;
+}
+
+
+.login-pf body {
+    background: hsl(var(--background));
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: hsl(var(--foreground));
+}
+
+
+.card-pf {
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
+}
+
+
+.pf-c-input-group {
+    background-color: hsl(var(--background));
+}
+
+.form-control, input[type="text"], input[type="password"], input[type="email"] {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--background));
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    transition: border-color 0.15s ease;
+    color: hsl(var(--foreground));
+}
+
+.form-control:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.3);
+    border-color: hsl(var(--ring));
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: hsl(var(--foreground));
+}
+
+.pf-c-button {
+    color: hsl(var(--primary-foreground)) !important;
+    background-color: hsl(var(--primary)) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 1rem;
+    height: 40px;
+    padding: 0 1rem;
+    transition: all 0.15s ease;
+    border: none !important;
+}
+
+.pf-c-button:hover {
+    background-color: hsl(var(--primary) / 0.9) !important;
+    border-bottom-color: transparent !important;
+}
+
+/* Disable button focus outline */
+.pf-m-control, .pf-m-control:hover {
+    margin-left: 10px;
+    --pf-c-button--after--BorderColor: none !important;
+    --pf-c-button--BorderRadius: none !important;
+    --pf-c-button--after--BorderWidth: none !important;
+    --pf-c-button--disabled--BackgroundColor: none !important;
+}
+
+.kc-social-item {
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    transition: background-color 0.15s ease;
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: 1px solid hsl(var(--border));
+}
+
+.kc-social-item:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+}
+
+
+input[type="checkbox"] {
+    height: 16px;
+    width: 16px;
+    border-radius: 3px;
+    border: 1px solid hsl(var(--border));
+    accent-color: hsl(var(--primary));
+    background-color: hsl(var(--background));
+}
+
+
+#kc-info-wrapper {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+}
+
+/* Disable pull to refresh on touch devices */
+html {
+    overscroll-behavior-y: none;
+}
+
+#kc-form-options {
+    margin-bottom: 1rem;
+}
+
+#kc-form-options .checkbox label {
+    color: hsl(var(--foreground));
+    font-weight: 500;
+}
+
