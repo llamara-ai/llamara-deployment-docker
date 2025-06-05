@@ -15,19 +15,7 @@ We recommend to use Keycloak as OIDC provider. For more details see the [Keycloa
 
 ## Configuration
 
-Provide the required environment variables in a `.env` file:
-
-```dotenv
-QUARKUS_OIDC_CREDENTIALS_SECRET=
-POSTGRES_PASSWORD=
-MINIO_ROOT_PASSWORD=
-MINIO_ACCESS_KEY=
-MINIO_SECRET_KEY=
-REDIS_PASSWORD=
-QDRANT_API_KEY=
-
-OPENAI_API_KEY=
-```
+Copy `.env.sample` and `.app.env.sample` removing the `.sample` file extension and fill out the empty environment variables.
 
 Use [`application.yaml.sample`](/config/application.yaml.sample) to create a `application.yaml` in the `config` dir that provides the required configuration.
 

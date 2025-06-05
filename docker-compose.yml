@@ -20,17 +20,7 @@ services:
       - 8080:8080
     volumes:
       - ./config:/config
-    environment:
-      # shared with other services in this stack
-      - QUARKUS_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
-      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
-      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
-      - QUARKUS_REDIS_CHAT_MEMORY_PASSWORD=${REDIS_PASSWORD}
-      - QUARKUS_REDIS_CHAT_HISTORY_PASSWORD=${REDIS_PASSWORD}
-      - QDRANT_API_KEY=${QDRANT_API_KEY}
-      # additional environment variables
-      - QUARKUS_OIDC_CREDENTIALS_SECRET=${QUARKUS_OIDC_CREDENTIALS_SECRET}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    env_file: .app.env
 
   postgres:
     image: postgres:17
@@ -43,9 +33,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     environment:
-      - POSTGRES_USER=llamara
+      - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=llamara
+      - POSTGRES_DB=${POSTGRES_DB}
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U llamara -d llamara" ]
       interval: 10s
@@ -64,7 +54,7 @@ services:
     volumes:
       - minio_data:/data
     environment:
-      - MINIO_ROOT_USER=minio
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
       - MINIO_DEFAULT_BUCKETS=llamara
     healthcheck:
@@ -82,7 +72,7 @@ services:
         condition: service_healthy
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc alias set myminio http://minio:9000 minio ${MINIO_ROOT_PASSWORD};
+      /usr/bin/mc alias set myminio http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD};
       /usr/bin/mc admin accesskey create myminio --access-key ${MINIO_ACCESS_KEY} --secret-key ${MINIO_SECRET_KEY} --name llamara-backend;
       exit 0;
       "
@@ -116,7 +106,7 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage:z
     environment:
-      - QDRANT__SERVICE__API_KEY=${QDRANT_API_KEY}
+      - QDRANT__SERVICE__API_KEY=${QDRANT_PASSWORD}
     healthcheck:
       test: [ "CMD-SHELL", "bash -c ':> /dev/tcp/127.0.0.1/6333' || exit 1" ]
       interval: 10s

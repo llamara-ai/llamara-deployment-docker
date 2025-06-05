@@ -12,6 +12,7 @@ bin/
 
 # Local environment
 .env
+.app.env
 
 # TLS Certificates
 .certs/
